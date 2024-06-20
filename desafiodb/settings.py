@@ -11,7 +11,12 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
+from dotenv import load_dotenv
+load_dotenv() #carga variables de entorno de archivo .env
+#asignacion de variables
+db_user = os.getenv('DB_USER')
+db_password = os.getenv('DB_PASSWORD')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -78,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'desafiodb',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
+        'USER': db_user,
+        'PASSWORD': db_password,
         'HOST': 'localhost', #127.0.0.1
         'PORT': '5432'
     }
