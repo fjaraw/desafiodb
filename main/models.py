@@ -10,3 +10,5 @@ class Curso(models.Model):
     cod = models.CharField(max_length=3, primary_key=True)
     nombre = models.CharField(max_length=255)
     activo = models.BooleanField(default=False)
+    
+    estudiante = models.ManyToManyField(Estudiante, related_name='cursos')
