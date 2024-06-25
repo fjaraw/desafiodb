@@ -1,14 +1,18 @@
 from dia3.models import Tarea, SubTarea
 
-def crear_nueva_tarea(descripcion: str):
-    t = Tarea(descripcion = descripcion)
-    t.save()
+def crear_nueva_tarea(*descripciones: str):
+    #multiples tareas: crear_nueva_tarea('t1', 't2', 't3')
+    for descripcion in descripciones:
+        t = Tarea(descripcion = descripcion)
+        t.save()
     imprimir_en_pantalla()
 
-def crear_subtarea(descripcion: str, idTarea:int):
+def crear_subtarea(*descripciones: str, idTarea:int):
     t = Tarea.objects.get(id=idTarea)
-    st = SubTarea(descripcion = descripcion, tarea = t)
-    st.save()
+    #multiples subtareas: crear_subtarea('t1', 't2', 't3')
+    for descripcion in descripciones:
+        st = SubTarea(descripcion = descripcion, tarea = t)
+        st.save()
 
 def elimina_tarea(idTarea:int):
     t = Tarea.objects.get(id=idTarea)
