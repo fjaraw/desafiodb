@@ -7,9 +7,9 @@ def crear_nueva_tarea(*descripciones: str):
         t.save()
     imprimir_en_pantalla()
 
-def crear_subtarea(*descripciones: str, idTarea:int):
+def crear_subtarea(idTarea:int, *descripciones: str):
     t = Tarea.objects.get(id=idTarea)
-    #multiples subtareas: crear_subtarea('t1', 't2', 't3')
+    #multiples subtareas: crear_subtarea(idTarea, 't1', 't2', 't3')
     for descripcion in descripciones:
         st = SubTarea(descripcion = descripcion, tarea = t)
         st.save()
