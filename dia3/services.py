@@ -1,6 +1,6 @@
 from dia3.models import Tarea, SubTarea
 
-def crear_tarea(descripcion: str):
+def crear_nueva_tarea(descripcion: str):
     t = Tarea(descripcion = descripcion)
     t.save()
     imprimir_en_pantalla()
